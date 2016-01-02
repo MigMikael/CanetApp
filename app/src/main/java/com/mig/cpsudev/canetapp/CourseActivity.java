@@ -105,7 +105,7 @@ public class CourseActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             progressDialog.dismiss();
-            //Log.i(TAG, result);
+
             // Extract JSON here
             try {
                 JSONObject jsonObject = new JSONObject(result);
@@ -118,6 +118,7 @@ public class CourseActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
             // Set Data to Adaptor
             mAdapter = new CourseRecyclerViewAdapter(CourseActivity.this, mData);
             mRecyclerView.setAdapter(mAdapter);

@@ -44,7 +44,6 @@ public class PostLoginTask extends AsyncTask<String, Void, String> {
         String result = "";
         try {
             HttpClient httpclient = new DefaultHttpClient();
-
             HttpPost httpPost = new HttpPost(url);
 
             String json;
@@ -56,14 +55,12 @@ public class PostLoginTask extends AsyncTask<String, Void, String> {
             json = jsonObject.toString();
 
             StringEntity se = new StringEntity(json);
-
             httpPost.setEntity(se);
 
             httpPost.setHeader("Accept", "application/json");
             httpPost.setHeader("Content-type", "application/json");
 
             HttpResponse httpResponse = httpclient.execute(httpPost);
-
             inputStream = httpResponse.getEntity().getContent();
 
             if (inputStream != null)
@@ -94,6 +91,4 @@ public class PostLoginTask extends AsyncTask<String, Void, String> {
         textView.setText(feedBackMessage);
         checksum = feedBackMessage.substring(13);
     }
-
-    Intent i = new Intent(mContext, CourseActivity.class);
 }
