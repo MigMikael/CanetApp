@@ -31,7 +31,6 @@ public class CourseActivity extends AppCompatActivity {
     private CourseRecyclerViewAdapter mAdapter;
 
     protected ArrayList<String> mData = new ArrayList<>();
-    //private static final String url = "http://jsonplaceholder.typicode.com/posts";
     private static final String url = "http://api.androidhive.info/contacts/";
 
     @Override
@@ -48,7 +47,7 @@ public class CourseActivity extends AppCompatActivity {
         task.execute(url);
     }
 
-    public class LoadCourseTask extends AsyncTask<String, Void, String>{
+    public class LoadCourseTask extends AsyncTask<String, Void, String> {
         private Context mContext;
         private ProgressDialog progressDialog;
 
@@ -73,7 +72,7 @@ public class CourseActivity extends AppCompatActivity {
                 URL url = new URL(urls);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 strResult = readStream(con.getInputStream());
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return strResult;
@@ -82,19 +81,19 @@ public class CourseActivity extends AppCompatActivity {
         private String readStream(InputStream in) {
             BufferedReader reader = null;
             StringBuilder sb = new StringBuilder();
-            try{
+            try {
                 reader = new BufferedReader(new InputStreamReader(in));
                 String line;
-                while((line = reader.readLine()) != null){
+                while ((line = reader.readLine()) != null) {
                     sb.append(line);
                 }
-            }catch(IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
-            }finally {
-                if (reader != null){
+            } finally {
+                if (reader != null) {
                     try {
                         reader.close();
-                    }catch(IOException e){
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
@@ -111,7 +110,7 @@ public class CourseActivity extends AppCompatActivity {
             try {
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray courseList = jsonObject.getJSONArray("contacts");
-                for (int i = 0; i <courseList.length(); i++){
+                for (int i = 0; i < courseList.length(); i++) {
                     JSONObject course = courseList.getJSONObject(i);
                     String courseName = course.getString("name");
                     mData.add(courseName);

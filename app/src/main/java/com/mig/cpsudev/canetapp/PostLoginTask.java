@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -18,9 +19,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-/**
- * Created by Mig on 25-Dec-15.
- */
 public class PostLoginTask extends AsyncTask<String, Void, String> {
     private Context mContext;
     private User mUser;
@@ -42,14 +40,14 @@ public class PostLoginTask extends AsyncTask<String, Void, String> {
     }
 
     private String postData(String url, User mUser) {
-        InputStream inputStream = null;
+        InputStream inputStream;
         String result = "";
         try {
             HttpClient httpclient = new DefaultHttpClient();
 
             HttpPost httpPost = new HttpPost(url);
 
-            String json = "";
+            String json;
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.accumulate("username", mUser.getUsername());
@@ -68,7 +66,7 @@ public class PostLoginTask extends AsyncTask<String, Void, String> {
 
             inputStream = httpResponse.getEntity().getContent();
 
-            if(inputStream != null)
+            if (inputStream != null)
                 result = convertInputStreamToString(inputStream);
             else
                 result = "Did not work!";
@@ -81,7 +79,7 @@ public class PostLoginTask extends AsyncTask<String, Void, String> {
 
     private static String convertInputStreamToString(InputStream inputStream) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-        String line = "";
+        String line;
         String result = "";
         while ((line = bufferedReader.readLine()) != null)
             result += line;
@@ -92,10 +90,10 @@ public class PostLoginTask extends AsyncTask<String, Void, String> {
 
     @Override
     public void onPostExecute(String feedBackMessage) {
-        TextView textView = (TextView) ((Activity)mContext).findViewById(R.id.StatusTextView);
+        TextView textView = (TextView) ((Activity) mContext).findViewById(R.id.StatusTextView);
         textView.setText(feedBackMessage);
         checksum = feedBackMessage.substring(13);
     }
 
-    Intent i = new Intent(mContext,CourseActivity.class);
+    Intent i = new Intent(mContext, CourseActivity.class);
 }
