@@ -16,7 +16,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView status;
     private Button signin;
     private Button signup;
-    private String url = "http://172.27.225.192:3000/api/sign_in";
+    private static final String url = "http://172.27.225.192:3000/api/sign_in";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

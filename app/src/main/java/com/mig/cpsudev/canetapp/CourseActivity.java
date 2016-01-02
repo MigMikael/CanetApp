@@ -10,12 +10,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class CourseActivity extends AppCompatActivity {
 
@@ -25,7 +30,9 @@ public class CourseActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private CourseRecyclerViewAdapter mAdapter;
 
-    protected String[] data;
+    protected ArrayList<String> mData = new ArrayList<>();
+    //private static final String url = "http://jsonplaceholder.typicode.com/posts";
+    private static final String url = "http://api.androidhive.info/contacts/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +45,7 @@ public class CourseActivity extends AppCompatActivity {
 
         //Load Data here.
         LoadCourseTask task = new LoadCourseTask(CourseActivity.this);
-        task.execute("http://jsonplaceholder.typicode.com/posts/1");
+        task.execute(url);
     }
 
     public class LoadCourseTask extends AsyncTask<String, Void, String>{
@@ -99,14 +106,21 @@ public class CourseActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             progressDialog.dismiss();
-            
-            Log.i(TAG, result);
-
+            //Log.i(TAG, result);
             // Extract JSON here
-            data = new String[]{"aaaaaaaaaa", "bbbbbbbbbb", "cccccccccc", "dddddddddd", "eeeeeeeeee", "ffffffffff", "gggggggggg"};
-
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray courseList = jsonObject.getJSONArray("contacts");
+                for (int i = 0; i <courseList.length(); i++){
+                    JSONObject course = courseList.getJSONObject(i);
+                    String courseName = course.getString("name");
+                    mData.add(courseName);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             // Set Data to Adaptor
-            mAdapter = new CourseRecyclerViewAdapter(CourseActivity.this, data);
+            mAdapter = new CourseRecyclerViewAdapter(CourseActivity.this, mData);
             mRecyclerView.setAdapter(mAdapter);
         }
     }
