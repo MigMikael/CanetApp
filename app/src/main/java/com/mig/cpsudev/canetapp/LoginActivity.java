@@ -13,10 +13,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText username;
     private EditText password;
-    private TextView status;
     private Button signin;
     private Button signup;
-    private static final String url = "http://172.27.225.192:3000/api/sign_in";
+    private static final String url = "http://172.27.169.148:3000/api/sign_in";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +24,6 @@ public class LoginActivity extends AppCompatActivity {
 
         username = (EditText) findViewById(R.id.usernameEditText);
         password = (EditText) findViewById(R.id.passwordEditText);
-        status = (TextView) findViewById(R.id.StatusTextView);
 
         signin = (Button) findViewById(R.id.signinbutton);
         signin.setOnClickListener(new View.OnClickListener() {
@@ -35,13 +33,6 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "Sending", Toast.LENGTH_SHORT).show();
                 PostLoginTask task = new PostLoginTask(LoginActivity.this, loginUser);
                 task.execute(url);
-
-                if (task.getChecksum().equals("1")) {
-                    Intent i = new Intent(LoginActivity.this, CourseActivity.class);
-                    startActivity(i);
-                } else {
-                    status.setText(R.string.loginFail);
-                }
             }
         });
 

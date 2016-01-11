@@ -1,6 +1,7 @@
 package com.mig.cpsudev.canetapp;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -12,6 +13,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -22,16 +24,18 @@ import java.io.InputStreamReader;
 public class PostLoginTask extends AsyncTask<String, Void, String> {
     private Context mContext;
     private User mUser;
-    private String checksum;
-
+    private TextView status;
+    private ProgressDialog progressDialog;
 
     public PostLoginTask(Context mContext, User mUser) {
         this.mContext = mContext;
         this.mUser = mUser;
     }
 
-    public String getChecksum() {
-        return checksum;
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progressDialog = ProgressDialog.show(mContext, "Please wait ...", "Downloading Data ...", true);
     }
 
     @Override
@@ -80,15 +84,21 @@ public class PostLoginTask extends AsyncTask<String, Void, String> {
         String result = "";
         while ((line = bufferedReader.readLine()) != null)
             result += line;
-
         inputStream.close();
         return result;
     }
 
     @Override
-    public void onPostExecute(String feedBackMessage) {
-        TextView textView = (TextView) ((Activity) mContext).findViewById(R.id.StatusTextView);
-        textView.setText(feedBackMessage);
-        checksum = feedBackMessage.substring(13);
+    public void onPostExecute(String feedBackStr) {
+        progressDialog.dismiss();
+        status = (TextView) ((Activity) mContext).findViewById(R.id.StatusTextView);
+        Log.i("Test", feedBackStr);
+        if (!feedBackStr.equals("{\"check_sum\":0}")) {
+            Intent i = new Intent(mContext, CourseActivity.class);
+            i.putExtra("courseList", feedBackStr);
+            mContext.startActivity(i);
+        } else {
+            status.setText(R.string.loginFail);
+        }
     }
 }
