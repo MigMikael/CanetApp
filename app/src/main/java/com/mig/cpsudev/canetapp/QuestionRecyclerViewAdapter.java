@@ -24,13 +24,13 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
 
     @Override
     public QuestionRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card, null);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_card, null);
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(QuestionRecyclerViewAdapter.ViewHolder holder, int position) {
-        holder.name.setText(mData.get(position));
+        holder.question.setText(mData.get(position));
     }
 
     @Override
@@ -39,17 +39,23 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView image;
-        private TextView name;
+        private TextView question;
+        private TextView choice1;
+        private TextView choice2;
+        private TextView choice3;
+        private TextView choice4;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            image = (ImageView) itemView.findViewById(R.id.imageView);
-            name = (TextView) itemView.findViewById(R.id.name);
+            question = (TextView) itemView.findViewById(R.id.questionTextView);
+            choice1 = (TextView) itemView.findViewById(R.id.choice1TextView);
+            choice2 = (TextView) itemView.findViewById(R.id.choice2TextView);
+            choice3 = (TextView) itemView.findViewById(R.id.choice3TextView);
+            choice4 = (TextView) itemView.findViewById(R.id.choice4TextView);
 
             Random rnd = new Random();
             int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-            image.setBackgroundColor(color);
+            question.setBackgroundColor(color);
         }
     }
 }
