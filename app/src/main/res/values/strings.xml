@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">CanetApp</string>
+    <string name="app_name" translatable="false">CanetApp</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="loginFail">Wrong Username or Password</string>
+    <string name="signUp">Sign Up</string>
+    <string name="signIn">Sign In</string>
 </resources>

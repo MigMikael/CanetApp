@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="username">ชื่อผู้ใช้</string>
+    <string name="password">รหัสผ่าน</string>
+    <string name="loginFail">ชื่อผู้ใช้ หรือ รหัสผ่านผิด</string>
+    <string name="signUp">ลงทะเบียน</string>
+    <string name="signIn">เข้าระบบ</string>
+</resources>

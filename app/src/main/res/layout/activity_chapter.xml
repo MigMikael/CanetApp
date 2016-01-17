@@ -7,6 +7,16 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.mig.cpsudev.canetapp.QuestionActivity">
+    tools:context=".ChapterActivity">
+
+    <ListView
+        android:id="@+id/chapterListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--<android.support.v7.widget.RecyclerView
+        android:id="@+id/questionRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />-->
 
 </RelativeLayout>

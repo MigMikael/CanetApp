@@ -15,7 +15,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText password;
     private Button signin;
     private Button signup;
-    private static final String url = "http://172.27.169.148:3000/api/sign_in";
+    private static final String url = "http://192.168.1.8:3000/api/sign_in";
+    //private static final String url = "http://posttestserver.com/post.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 User loginUser = new User(username.getText().toString(), password.getText().toString());
                 Toast.makeText(LoginActivity.this, "Sending", Toast.LENGTH_SHORT).show();
-                PostLoginTask task = new PostLoginTask(LoginActivity.this, loginUser);
+                PostLoginTask2 task = new PostLoginTask2(LoginActivity.this, loginUser);
                 task.execute(url);
             }
         });

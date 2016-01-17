@@ -58,7 +58,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign in"
+                android:text="@string/signIn"
                 android:id="@+id/signinbutton"
                 android:background="@color/colorAccent"
                 android:layout_margin="5dp"
@@ -68,7 +68,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign up"
+                android:text="@string/signUp"
                 android:id="@+id/signupbutton"
                 android:background="@color/colorAccent"
                 android:layout_margin="5dp"
