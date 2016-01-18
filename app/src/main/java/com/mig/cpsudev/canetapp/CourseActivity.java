@@ -27,7 +27,7 @@ public class CourseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_course);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.courseRecyclerView);
-        mLayoutManager = new GridLayoutManager(CourseActivity.this, 1);
+        mLayoutManager = new GridLayoutManager(CourseActivity.this, 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         Intent intent = getIntent();

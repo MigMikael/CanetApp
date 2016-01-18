@@ -5,4 +5,5 @@
     <string name="loginFail">ชื่อผู้ใช้ หรือ รหัสผ่านผิด</string>
     <string name="signUp">ลงทะเบียน</string>
     <string name="signIn">เข้าระบบ</string>
+    <string name="exampleQuestion">คุณชื่ออะไร ?</string>
 </resources>

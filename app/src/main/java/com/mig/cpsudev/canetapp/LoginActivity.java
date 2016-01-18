@@ -15,7 +15,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText password;
     private Button signin;
     private Button signup;
-    private static final String url = "http://192.168.1.8:3000/api/sign_in";
+    private static final String url = "http://192.168.42.13:3000/api/sign_in";
     //private static final String url = "http://posttestserver.com/post.php";
 
     @Override

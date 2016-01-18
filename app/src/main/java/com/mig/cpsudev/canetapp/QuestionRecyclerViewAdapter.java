@@ -17,9 +17,9 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
     private ArrayList<String> mData;
     private Context mContext;
 
-    public QuestionRecyclerViewAdapter(ArrayList<String> mData, Context mContext) {
-        this.mData = mData;
+    public QuestionRecyclerViewAdapter(Context mContext, ArrayList<String> mData) {
         this.mContext = mContext;
+        this.mData = mData;
     }
 
     @Override
@@ -40,22 +40,14 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView question;
-        private TextView choice1;
-        private TextView choice2;
-        private TextView choice3;
-        private TextView choice4;
 
         public ViewHolder(View itemView) {
             super(itemView);
             question = (TextView) itemView.findViewById(R.id.questionTextView);
-            choice1 = (TextView) itemView.findViewById(R.id.choice1TextView);
-            choice2 = (TextView) itemView.findViewById(R.id.choice2TextView);
-            choice3 = (TextView) itemView.findViewById(R.id.choice3TextView);
-            choice4 = (TextView) itemView.findViewById(R.id.choice4TextView);
 
-            Random rnd = new Random();
+            /*Random rnd = new Random();
             int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-            question.setBackgroundColor(color);
+            question.setBackgroundColor(color);*/
         }
     }
 }

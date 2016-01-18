@@ -32,6 +32,7 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.name.setText(mData.get(position));
+        holder.image.setImageResource(R.drawable.icon_math);
     }
 
     @Override

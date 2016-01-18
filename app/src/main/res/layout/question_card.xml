@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="9dp"
         android:layout_marginLeft="9dp"
         android:layout_marginRight="9dp"
@@ -23,49 +24,20 @@
             <TextView
                 android:id="@+id/questionTextView"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="What is the your name?"
+                android:layout_height="wrap_content"
+                android:text="@string/exampleQuestion"
                 android:textSize="20sp"
-                android:padding="5dp" />
+                android:padding="10dp"
+                android:background="@color/colorPrimary"
+                android:textColor="#ffffff" />
 
-            <TextView
-                android:id="@+id/choice1TextView"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="A. Mig"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp" />
-
-            <TextView
-                android:id="@+id/choice2TextView"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="B. Man"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp" />
-
-            <TextView
-                android:id="@+id/choice3TextView"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="C. Korn"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp" />
-
-            <TextView
-                android:id="@+id/choice4TextView"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="D. New"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:text="Show"/>
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                android:src="@drawable/icon_send" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
